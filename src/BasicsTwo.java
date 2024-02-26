@@ -3,13 +3,18 @@ import io.restassured.path.json.JsonPath;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.testng.Assert;
 
 import files.payload;
 
 public class BasicsTwo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		//validate if the Add place API is working as expected
 		
@@ -19,13 +24,22 @@ public class BasicsTwo {
 		
 		RestAssured.baseURI = "https://rahulshettyacademy.com";
 				// Add Place API
+		/*
 				String response = given().log().all().queryParam("key", "qaclick123")
 						.header("Content-Type","application/json")
 						.body(payload.AddPlace())
 						.when().post("/maps/api/place/add/json")
 						.then().assertThat().statusCode(200).body("scope", equalTo("APP"))
 						.header("server","Apache/2.4.52 (Ubuntu)").extract().response().asString();
+						*/
 				
+				String response = given().log().all().queryParam("key", "qaclick123")
+						.header("Content-Type","application/json")
+						.body(new String (Files.readAllBytes(Paths.get("flkkff"))))
+						.when().post("/maps/api/place/add/json")
+						.then().assertThat().statusCode(200).body("scope", equalTo("APP"))
+						.header("server","Apache/2.4.52 (Ubuntu)").extract().response().asString();
+		
 				System.out.println(response);
 				
 				JsonPath js = new JsonPath(response);
