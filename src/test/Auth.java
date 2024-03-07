@@ -19,7 +19,7 @@ public class Auth {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		String [] courseTitles = {"Selenium Webdriver Java", "Cypress", "Protractor"};
+	
 
 // TODO Auto-generated method stub
 
@@ -48,7 +48,7 @@ public class Auth {
 				System.out.println(apiCourses.get(i).getPrice());
 			}
 		}
-		
+		String [] courseTitles = {"Selenium Webdriver Java", "Cypress", "Protractor"};
 		ArrayList<String> actual = new ArrayList<String>();
 		
 		List<WebAutomation> w =gc.getCourses().getWebAutomation();
